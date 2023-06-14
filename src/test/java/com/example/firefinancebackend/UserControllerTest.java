@@ -1,7 +1,7 @@
 package com.example.firefinancebackend;
 
 import com.example.firefinancebackend.domain.User;
-import com.example.firefinancebackend.services.UserService;
+import com.example.firefinancebackend.services.UserServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ class UserControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    UserService userService;
+    UserServiceImpl userService;
 
     @Test
     void shouldGetUserByIdOf1() throws Exception {

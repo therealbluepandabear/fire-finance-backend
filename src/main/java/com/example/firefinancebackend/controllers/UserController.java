@@ -2,7 +2,7 @@ package com.example.firefinancebackend.controllers;
 
 import com.example.firefinancebackend.domain.User;
 import com.example.firefinancebackend.exceptions.UserNotFoundException;
-import com.example.firefinancebackend.services.UserService;
+import com.example.firefinancebackend.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/users")
 public class UserController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
