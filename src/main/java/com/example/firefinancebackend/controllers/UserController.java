@@ -21,8 +21,6 @@ public class UserController {
 
     @PostMapping
     ResponseEntity<?> createUser(@RequestBody User user) {
-        System.out.println(">>>>>>>>>>>>>>>>>>> got request");
-
         try {
             userService.createUser(user);
 

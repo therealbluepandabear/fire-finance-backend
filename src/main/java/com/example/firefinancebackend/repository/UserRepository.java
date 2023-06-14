@@ -1,6 +1,6 @@
 package com.example.firefinancebackend.repository;
 
 import com.example.firefinancebackend.domain.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.ListCrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Long> { }
+public interface UserRepository extends ListCrudRepository<User, Long> { }
