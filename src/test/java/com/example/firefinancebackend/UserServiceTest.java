@@ -7,14 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 class UserServiceTest {
@@ -37,7 +35,7 @@ class UserServiceTest {
 
         when(userRepository.findById(id)).thenReturn(Optional.of(dummyUser));
 
-        assertThat(userService.getUserById(id).getEmail()).isEqualTo(email);
+        assertThat(userService.getUser(id).getEmail()).isEqualTo(email);
     }
 
     @Test

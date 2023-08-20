@@ -33,7 +33,7 @@ class UserControllerTest {
         User dummyUser = new User();
         dummyUser.setEmail(dummyEmail);
 
-        when(userService.getUserById(1L)).thenReturn(dummyUser);
+        when(userService.getUser(1L)).thenReturn(dummyUser);
 
         mockMvc.perform(get("/api/users/1"))
             .andExpect(status().isOk())
