@@ -1,7 +1,9 @@
 package com.example.firefinancebackend.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,11 +14,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,12 +37,12 @@ public class Plan {
 
     @Column(name = "is_starred")
     private Boolean isStarred;
-//
-//    @Column(name = "description")
-//    private String description;
-//
+
     @Embedded
     private PlanInputs inputs;
+
+    @ElementCollection
+    private List<Scenario> scenarios = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")

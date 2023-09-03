@@ -1,6 +1,7 @@
 package com.example.firefinancebackend.controllers;
 
 import com.example.firefinancebackend.domain.Plan;
+import com.example.firefinancebackend.domain.Scenario;
 import com.example.firefinancebackend.domain.User;
 import com.example.firefinancebackend.services.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -41,5 +43,19 @@ public class PlanController {
         planService.patchPlan(planId, fields);
 
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/scenarios")
+    public ResponseEntity<?> addScenario(@PathVariable Long planId, @RequestBody Scenario scenario) {
+        planService.addScenario(planId, scenario);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/scenarios")
+    public ResponseEntity<List<Scenario>> getScenarios(@PathVariable Long planId)  {
+        List<Scenario> scenarios = planService.getScenarios(planId);
+
+        return ResponseEntity.ok(scenarios);
     }
 }

@@ -2,8 +2,12 @@ package com.example.firefinancebackend.controllers;
 
 import com.example.firefinancebackend.domain.Plan;
 import com.example.firefinancebackend.domain.User;
+import com.example.firefinancebackend.exceptions.PlanNotFoundException;
+import com.example.firefinancebackend.repository.PlanRepository;
 import com.example.firefinancebackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,14 +34,14 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<?> getUserById(@PathVariable Long userId) {
+    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
         User user = userService.getUser(userId);
 
         return ResponseEntity.ok(user);
     }
 
     @GetMapping
-    public ResponseEntity<?> getUsers() {
+    public ResponseEntity<List<User>> getUsers() {
         List<User> users = userService.getUsers();
 
         return ResponseEntity.ok(users);
@@ -54,7 +58,7 @@ public class UserController {
     }
 
     @GetMapping("{userId}/plans")
-    public ResponseEntity<?> getPlans(
+    public ResponseEntity<Set<Plan>> getPlans(
         @PathVariable Long userId,
         @RequestHeader(name = "Filter-Starred", defaultValue = "false") Boolean filterStarred
     ) {
